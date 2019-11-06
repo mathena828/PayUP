@@ -1,0 +1,117 @@
+body {
+  background: #ffffff;
+  color: #333333;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
+}
+
+ul {
+  margin: 0;
+}
+
+.background {
+  background-color: #28a745;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #e8faec;
+  font-size:20px;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+
+.navbar-brand {
+  padding: 0 15px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 30px; 
+  
+}
+
+.asteriskField {
+  display:none;
+}
+
+.requiredField {
+  text-transform: capitalize;
+}
+
+.content-section {
+  margin-top: 100px;
+  margin-bottom: 30px;
+  /*
+  padding: 20px 20px;
+  border-style: solid;
+  border-color: #fbb03b;
+  border-width: 10px 10px 10px 10px;
+  outline-style: solid;
+  outline-color: #f15a22;
+  outline-width: 10px;
+  */
+  
+}
+
+.logout-message {
+  margin-top:100px;
+}
+
+.no-project-wrapper {
+  margin-top:200px;
+}
+
+.no-project-wrapper h3 {
+  margin-bottom:20px;
+}
+
+.section-stats {
+  margin-top:100px;
+}
+
+.section-stats .card {
+  padding:20px 20px;
+  font-weight: bold;
+  font-size:40px;
+}
+
+.section-functions .add-button {
+  margin-top:20px;
+}
+
+.section-functions .transactions .card {
+  margin-top: 20px;
+  padding:10px 10px;
+}
+
+.section-functions .transactions .card .close {
+  color: red;
+  text-align:center;
+  display:inline-block;
+}
+
+.modal-header, h4 {
+  background-color: #5cb85c;
+  text-align: center;
+  font-size: 30px;
+  color:white !important;
+}
+
+.modal-header h4 {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.modal-header .close {
+  margin-left:0;
+  color:white;
+}
+

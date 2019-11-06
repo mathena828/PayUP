@@ -1,0 +1,138 @@
+{% extends "home/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<style>
+		.container{
+			margin-top:0;
+			padding-top:0;
+		}
+		.section-stats{
+			margin-top:1em;
+		}
+		.btn-block{
+			margin-top:2em;
+		}
+		.filter{
+			padding:1em 0.5em;
+			background-color: rgba(179, 179, 179, 0.24);;
+		}
+		@media screen and (max-width:841px){
+			.card-text{
+				font-size: 1.5rem;
+			}
+		}
+		@media screen and (max-width:735px){
+			.card-text{
+				font-size: 1.2rem;
+			}
+			.card-title{
+				font-size: 1rem;
+			}
+		}
+		
+	</style>
+	<div class="container">
+		<section class="section-stats" >
+			<div class="row">
+				{% for profile in profiles %}
+					{% if profile.user == user %}
+						<div class="col-sm-4">
+							<div class="card">
+								<h5 class="card-title">Total Balance</h5>
+		        				<p class="card-text">₱ {{ profile.total_balance |floatformat:2 }}</p>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="card">
+								<h5 class="card-title">Total Income</h5>
+		        				<p class="card-text">₱{{ profile.total_income|floatformat:2 }}</p>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="card">
+								<h5 class="card-title">Total Expenses</h5>
+		        				<p class="card-text">₱{{ profile.total_expenses |floatformat:2 }}</p>
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</section>
+
+		<br>
+		<section class="section-functions">
+			<form class="filter" method="GET" action="">
+				<div class="form-row">
+					<div class="search-bar form-group  col-md-3">
+				  		<input name="q"  value="{{request.GET.q}}" class="form-control" type="text" placeholder="Search" aria-label="Search">
+					</div>	 
+				</div>
+				<div class="form-row">
+					<div class="form-group col-sm-4" >
+					  <label for="inputStartDate">Start Date</label>
+				      <input name="start" type="date" value="{{request.GET.start}}"  class="form-control" id="inputStartDate" >
+				    </div>
+				    <div class="form-group col-sm-4">
+				      <label for="inputEndDate">End Date</label>
+				      <input name="end" type="date"  value="{{request.GET.end}}" class="form-control" id="inputEndDate" >
+				    </div>
+				    <div class="form-group col-sm-3">
+				    	<button type="submit" class="btn btn-block btn-outline-success">Filter</button>
+				    </div>
+				</div>
+			</form>
+
+			<ul class="transactions p-2" style="list-style-type:none">
+				{% for transaction in transactions %}
+					{% if transaction.user == user %}
+						<li>
+							<div class="card">
+								<div class="row">
+									<div class="col-sm-3">
+										<span class="card-text float-left">
+											<div style="text-transform:capitalize;">{{transaction.category}} 
+											<small class="text-muted"> {{transaction.date|date:"F d, Y"}}</small>
+											</div>
+										</span>
+									</div>
+									<div class="col-sm-3 text-center">
+										<span class="card-text">₱ {{transaction.amount}}</span>
+									</div>
+									<div class="col-sm-3">
+										<span class="card-text float-right">{{ transaction.tag }}</span>
+									</div>
+									<a onclick="deleteTransaction(this)" data-id="{{transaction.id}}" id="refresh" class="close col-sm-2" aria-label="Close">
+										<span class="card-block float-right"  aria-hidden="true">&times;</span>
+									</a>
+								</div>
+							</div>
+						</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</section>
+
+	</div>
+	<script>
+		function deleteTransaction(e) {
+	
+			let id = e.dataset.id
+			e.closest('li').remove()
+	
+			fetch('',{
+				method: 'DELETE',
+				headers: {
+					'X-CSRFToken': '{{ csrf_token }}'
+				},
+				body: JSON.stringify({
+					'id': id
+				}),
+				credentials: 'same-origin',
+			})
+			location.reload()
+		}
+	</script>
+	
+
+	
+{% endblock %}

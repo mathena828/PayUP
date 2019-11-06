@@ -1,0 +1,29 @@
+<!-- {% extends "home/base.html" %}
+{% block content %}
+{% load static %}
+<div class="container">
+    <div class="card-one">
+        <img src="{% static 'assets/peso.png' %}" alt="money">
+        <h2>Make Transactions</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis nisi
+        itaque tenetur accusamus doloribus commodi eligendi est nobis ab earum!</p>
+    </div>
+    <div class="card-two">
+        <img src="{% static 'assets/record.png' %}"  alt="record">
+        <h2>Check Your Balance</h2>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi,
+        necessitatibus temporibus natus esse similique iste assumenda omnis
+        harum sed non.</p>
+        </div>
+
+    <div class="card-three">
+        <img src="{% static 'assets/eye.png' %}"  alt="eye">
+        <h2>Control Your Money</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto eum
+        est dolore culpa repellendus. Aut esse quibusdam ab in voluptas!</p>
+        
+    </div>
+</div>
+{% endblock %}
+
+-->

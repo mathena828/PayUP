@@ -1,0 +1,94 @@
+{% extends "home/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<style>
+		.container{
+			margin-top:0;
+			padding-top:0;
+		}
+		.section-stats{
+			margin-top:1em;
+		}
+		.modal-body{
+			margin: 1em 2em;
+			background-color: rgba(179, 179, 179, 0.24);
+		}
+
+		@media screen and (max-width:841px){
+			.card-text{
+				font-size: 1.5rem;
+			}
+		}
+		@media screen and (max-width:735px){
+			.card-text{
+				font-size: 1.2rem;
+			}
+			.card-title{
+				font-size: 1rem;
+			}
+		}
+		.transact-btn{
+			text-align: center;
+		}
+		.transact-btn .btn{
+			width:250px;
+		}
+	</style>
+
+	<div class="container">
+
+		<section class="section-stats" >
+			<div class="row">
+				{% for profile in profiles %}
+					{% if profile.user == user %}
+						<div class="col-sm-4">
+							<div class="card">
+								<h5 class="card-title">Total Balance</h5>
+		        				<p class="card-text">₱ {{ profile.total_balance |floatformat:2 }}</p>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="card">
+								<h5 class="card-title">Total Income</h5>
+		        				<p class="card-text">₱{{ profile.total_income |floatformat:2 }}</p>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="card">
+								<h5 class="card-title">Total Expenses</h5>
+		        				<p class="card-text">₱{{ profile.total_expenses |floatformat:2 }}</p>
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</section>
+
+		<div class="modal-body">
+			<form method = "POST">
+				{% csrf_token %}
+				<div class="form-group">
+					<label for="tag">Tag</label>
+				 	<input name="tag" class="form-control" id="tag">
+				</div>
+				<div class="form-group">
+				 	<label for="amount">Amount</label>
+				 	<input name="amount" class="form-control" id="amount">
+				</div>
+				<div class="form-group">
+					<label for="tag">Category</label>
+				 	<select name="category" class="form-control">
+				 	<option> Income </option>
+				 	<option> Expense </option>
+				 	</select>
+				</div>
+				<div class="form-group transact-btn">
+					<button class="btn btn-outline-success form-control"
+					type="submit">Add Transaction</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+{% endblock %}
