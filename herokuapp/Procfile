@@ -1,1 +1,1 @@
-web: gunicorn PayUP.wsgi --log-file -
+web: gunicorn PayUP.wsgi
