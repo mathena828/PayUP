@@ -1,0 +1,105 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block content %}
+<style>
+    .content{
+        height:100%;
+        animation: fadein 2s;
+			-moz-animation: fadein 2s; /* Firefox */
+			-webkit-animation: fadein 2s; /* Safari and Chrome */
+			-o-animation: fadein 2s; /* Opera */
+		}
+		@keyframes fadein {
+			from {
+				opacity:0;
+			}
+			to {
+				opacity:1;
+			}
+		}
+		@-moz-keyframes fadein { /* Firefox */
+			from {
+				opacity:0;
+			}
+			to {
+				opacity:1;
+			}
+		}
+		@-webkit-keyframes fadein { /* Safari and Chrome */
+			from {
+				opacity:0;
+			}
+			to {
+				opacity:1;
+			}
+		}
+		@-o-keyframes fadein { /* Opera */
+			from {
+				opacity:0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+		.section-stats{
+			margin-top:1em;
+		}
+		.btn-block{
+			margin-top:2em;
+		}
+		.filter{
+			padding:1em 0.5em;
+			/*background-color: rgba(179, 179, 179, 0.24);*/
+		}
+		@media screen and (max-width:841px){
+			.card-text{
+				font-size: 1.5rem;
+			}
+		}
+		@media screen and (max-width:735px){
+			.card-text{
+				font-size: 1.2rem;
+			}
+			.card-title{
+				font-size: 1rem;
+			}
+		}
+    .row{
+        margin:1em auto;
+        text-align:center;
+    }
+    img{
+        width:80px;
+        height:auto;
+    }
+    h4{
+        padding: 3em;
+    }
+</style>
+<div class="content">
+    <h4>PayUP. Because you deserve it.</h4>
+    <div class="row">
+            <div class="col-md-4">
+                            <img src="{% static 'assets/record.png' %}" alt="money">
+                            <h2>Make Transactions</h2>
+                            <p>Record each of your transactions as it happens on your Home page.
+                            Easily answer the form and you're good to go! </p>
+                    
+                </div>
+                <div class="col-md-4">
+                            <img src="{% static 'assets/eye.png' %}" alt="balance scale">
+                            <h2>Check Your Balance</h2>
+                            <p>On your Profile page, check out all the transactions you've made easily</p>
+                    
+                </div>
+            
+                <div class="col-md-4">
+                            <img src="{% static 'assets/peso.png' %}" alt="graph">
+                            <h2>Control Your Money</h2>
+                            <p>Your Statistics page shows all of the expenses
+                            and income you've made in an easy to understand graph.</p>                    
+                </div>
+    </div>
+    
+</div>
+{% endblock %}

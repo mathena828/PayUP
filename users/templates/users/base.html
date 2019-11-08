@@ -138,11 +138,11 @@
 </head>
 <body>
 	<!-- Vertical navbar -->
+
 	{% if user.is_authenticated %}
 	<div class="container-all">
 		
 		<div class="vertical-nav" id="sidebar">
-			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 			<h3 class="font-weight-bold">PayUP</h3>
 			<hr>
 			<ul class="nav flex-column mb-0">
@@ -155,7 +155,12 @@
 				-->
 				<li class="nav-item">
 					<a href="{% url 'profile' %}" class="nav-link text-dark">
-						Profile
+						Profiles
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="{% url 'howto' %}" class="nav-link text-dark">
+						How To
 					</a>
 				</li>
 				<li class="nav-item">

@@ -71,6 +71,9 @@ def profile(request):
 @login_required
 def statistics(request):
     return render(request, 'users/statistics.html')
+@login_required
+def howto(request):
+	return render(request, 'users/howto.html')
 
 def get_data(request):
 
