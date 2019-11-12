@@ -111,8 +111,6 @@ def get_data(request):
 
 @login_required
 def home(request):
-
-
 	context = {
 		'transactions' : Transaction.objects.all(),
 		'profiles' : Profile.objects.all()
@@ -140,14 +138,23 @@ def home(request):
 			amount = form.cleaned_data.get('amount')
 			category = form.cleaned_data.get('category')
 			user=request.user
-			
+			""" def clean(self, value):
+    			cleaned_data = self.cleaned_data
+				if category=='Expense' and tag in inc:
+					raise forms.ValidationError("You call that a title?!")
+				else:
+					return cleaned_data 
+				if category=='Income' and tag in exp:
+					raise forms.ValidationError("You call that a title?!")
+				else:
+					return cleaned_data  """
 			if category=='Expense' and tag in inc:
 				#return render(request, 'users/home.html', {'some_flag': True})
 				messages.warning(request, 'This tag already exists as an income.')
 			elif category=='Income' and tag in exp:
 				#return render(request, 'users/home.html', {'some_flag': True})
 				messages.warning(request, 'This tag already exists as an expense.')
-			
+			 
 			Transaction.objects.create(
 				user=user,
 				tag=tag,

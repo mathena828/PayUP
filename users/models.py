@@ -47,7 +47,15 @@ class Transaction(models.Model):
 	tag = models.CharField(max_length=100)
 	amount = models.DecimalField(max_digits=10,decimal_places=2)
 
-	
+	""" def clean(self):
+    # check if 'force' checkbox is not set on the form
+    if not self.cleaned_data.get('force'):
+        dup_list = get_object_duplicates(Tvshow, title = self.object.title)
+        if dup_list:
+            raise forms.ValidationError("A tv show with this name already exists. "
+                                        "Are you sure this is not the same one? "
+                                        "Click submit again once you're sure this "
+                                        "is new content") """
 
 	class Meta:
 		ordering = ('-date',)
