@@ -1,1 +1,1 @@
-web: gunicorn payup173.wsgi
+web: gunicorn payupfinancetracker.wsgi

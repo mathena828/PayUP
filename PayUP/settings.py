@@ -27,7 +27,7 @@ SECRET_KEY = 'lbl4b#0jm!nqxe_ji)4_k8_*tx2y3j+d1di9(di2j-62f@@5e$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['payupfinancetracker.herokuapp.com']
 
 
 # Application definition
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -73,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-#WSGI_APPLICATION = 'PayUP.wsgi.application'
+WSGI_APPLICATION = 'PayUP.wsgi.application'
 
 
 # Database
@@ -136,3 +137,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
 #django_heroku.settings(locals())
+
+import dj_database_url 
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
