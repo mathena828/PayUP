@@ -9,7 +9,6 @@
 	}
 	form{
 		background-color:#F1F1F1;
-		border: 0.5px solid #707070;
 		padding: 2em;
 		margin: 2em 4em 0.5em;
 		text-align:left;
@@ -35,11 +34,12 @@
 			<div class="form-group">
 				<button class="btn" type="submit">Log In</button>
 			</div>
-		</form>
-		<div class="border=top pt-3">
+			<div class="border-top pt-3">
 			<small class="text-muted">
-				Create an account. <a class="ml-2" href="{% url 'register' %}">Sign Up</a>
+				Don't have an account?<a class="ml-2" href="{% url 'register' %}">Sign-Up</a>
 			</small>
 		</div>
+		</form>
+		
 	</div>
 {% endblock %}

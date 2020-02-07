@@ -1,6 +1,7 @@
 {% extends "home/base.html" %}
 {% load crispy_forms_tags %}
 {% block contentreg %}
+
 	<style>
 		.content-section{
 			margin:auto auto;
@@ -9,37 +10,41 @@
 		}
 		form{
 			background-color:#F1F1F1;
-			border: 0.5px solid #707070;
 			padding: 2em;
 			margin: 2em 4em 0.5em;
 			text-align:left;
 		}
 		button.btn{
-		border: 1px #36D137 solid;
-		background-color:#f1f1f1;
-		color:#36D137;
-	}
-	button.btn:hover{
-		background-color:#36D137;
-		color:white;
-	}
-		
+			border: 1px #36D137 solid;
+			background-color:#f1f1f1;
+			color:#36D137;
+		}
+		button.btn:hover{
+			background-color:#36D137;
+			color: white;
+		}
+		ul {
+			margin-left:20px;
+		}
 	</style>
+
 	<div class="content-section">
 		<form method="POST">
 			{% csrf_token %}
 			<fieldset class="form-group">
-				<legend class="border-bottom mb-4">Register Now</legend>
+				<legend class="border-bottom mb-4">Register</legend>
 				{{ form|crispy }}
 			</fieldset>
 			<div class="form-group">
 				<button class="btn" type="submit">Sign Up</button>
 			</div>
-		</form>
-		<div class="border=top pt-3">
+			<div class="border-top pt-3">
 			<small class="text-muted">
-				Do you already have an account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+				Already have an account?<a class="ml-2" href="{% url 'login' %}">Sign-In</a>
 			</small>
 		</div>
+		</form>
+		
 	</div>
+
 {% endblock %}

@@ -2,6 +2,11 @@
 {% load crispy_forms_tags %}
 {% block content %}
 	<style>
+		.card-title,
+		.form-group,
+		.btn{
+			font-family: 'Roboto', sans-serif;
+		}
 		.container{
 			margin-top:0;
 			padding-top:0;
@@ -69,7 +74,7 @@
 			margin-top:1em;
 		}
 		.modal-body{
-			margin: 2em 10em;
+			margin: 2em 0em;
 			padding: 1.5em 4em;
 			background-color: rgba(179, 179, 179, 0.24);
 		}
@@ -91,7 +96,8 @@
 			text-align: center;
 		}
 		.transact-btn .btn{
-			width:60%;
+			width:100%;
+			margin-top:10px;
 		}
 	</style>
 
@@ -138,8 +144,8 @@
 				<div class="form-group">
 					<label for="tag">Category</label>
 				 	<select name="category" class="form-control">
-				 	<option> Income </option>
-				 	<option> Expense </option>
+					 	<option> Income </option>
+					 	<option> Expense </option>
 				 	</select>
 				</div>
 				<div class="form-group transact-btn">
@@ -148,11 +154,13 @@
 				</div>
 			</form>
 		</div>
+
 	{% if some_flag %}
 		<div id="some_flag" title="Some Flag">
-			<p>Some Text Here</p>
+			<p>NOTICE</p>
 		</div>
 	{% endif %}
+
 	</div>
 
 

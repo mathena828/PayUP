@@ -24,8 +24,9 @@
 		/*LOGIN/REGISTER SECTION*/
 		h1{
 			color: #36D137;
-			font-size: 150px;
+			font-size: 170px;
 			margin-top:0.75em;
+			font-family: 'Roboto', sans-serif !important;
 		}
 		h3{
 			font-size:50px;
@@ -58,21 +59,22 @@
 			float: left;
 		}
 		.container-links{
-			text-align: center;
+			text-align: right;
 			margin: 1.5em 1.5em 0 1.5em;
 		}
 		.container{
 			padding: 0 1em;
 		}
 		p.description{
-			color:#36a9d1;
+			color:#36A9D1;
 			text-align:center;
 			font-size:1.5em;
 			padding-top: 5px;
 			padding-right: 4.5em;
+			font-family: 'Roboto', sans-serif !important;
 		}
 		a:hover{
-			color: #83ACE3;
+			color: #36A9D1;
 			text-decoration: none;
 		}
 		/*USER ACCOUNT SECTION*/
@@ -165,13 +167,12 @@
 	<div class="contain-all">
 		<div class="container-left">
 			<h1 class="font-weight-bold">PayUP</h1>
-			<p class="description"> Make Transactions. Check Your Balance. Control Your Money. </p>
+			<p class="description"> Manage Your Finances. Check Your Balance. Control Your Money. </p>
 		</div>
 		<div class="container-right">
 			<div class="container-links">
-				<a class="lglink" id="isActive" href="{% url 'login' %}"><img src="{% static 'assets/login.png' %}" alt="Log In Icon">Log In</a>
-				|
-				<a class="lglink" href="{% url 'register' %}"><img src="{% static 'assets/register.png' %}" alt="Register Icon">Sign Up</a>
+				<a class="lglink" id="isActive" href="{% url 'login' %}"><img src="{% static 'assets/login.png' %}" alt="Log In Icon"> Log In</a>
+				<a class="lglink" href="{% url 'register' %}"><img src="{% static 'assets/register.png' %}" alt="Register Icon"> Sign Up</a>
 			</div>
 
 			<div class="container">

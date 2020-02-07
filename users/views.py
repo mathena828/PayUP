@@ -21,7 +21,6 @@ def register(request):
 		if form.is_valid():
 			form.save()
 			username = form.cleaned_data.get('username')
-			messages.success(request,f'Your account has been created. Please log-in.')
 			return redirect('login')
 	else:
 		form = UserRegisterForm()
@@ -37,7 +36,6 @@ def profile(request):
 		query = request.GET.get('q')
 		start = request.GET.get('start')
 		end = request.GET.get('end')
-		print(start)
 
 		if query and query!="":
 			results = results.filter(Q(tag__icontains=query))
@@ -71,12 +69,12 @@ def profile(request):
 @login_required
 def statistics(request):
     return render(request, 'users/statistics.html')
+
 @login_required
 def howto(request):
 	return render(request, 'users/howto.html')
 
 def get_data(request):
-
     dataset = Transaction.objects \
         .values('category') \
         .exclude(category='') \
@@ -86,12 +84,13 @@ def get_data(request):
     profile = Profile(user=request.user)
     income = float(profile.total_income())
     expenses = float(profile.total_expenses())*-1
+    
     for i in range(len(dataset)):
     	if i==0:
     		dataset[i].update(total=expenses)
     	else:
     		dataset[i].update(total=income)
-    print(dataset)
+
     category_display_name = {
         "Income":"Income",
         "Expense":"Expense"
@@ -99,7 +98,16 @@ def get_data(request):
 
     chart = {
         'chart': {'type': 'pie'},
-        'title': {'text': 'PayUP'},
+        'title': {'text': 'Financial Statistics'},
+        'colors': ['#36D137','#36A9D1'],
+        'plotOptions': {
+        	'pie' : {
+		        'dataLabels': {
+		            'enabled': False
+		         },
+		        'showInLegend': True
+		    }
+	    },
         'series': [{
             'name': 'Total',
             'data': list(map(lambda row: {'name': category_display_name[row['category']], 'y': row['total']}, dataset))
@@ -116,21 +124,7 @@ def home(request):
 		'profiles' : Profile.objects.all()
 	}
 
-
 	if request.method == 'POST':
-		
-		income_list = Transaction.objects.filter(Q(category="Income")).values('tag')
-		expense_list = Transaction.objects.filter(Q(category="Expense")).values('tag')
-		inc = []
-		exp = []
-		for i in income_list:
-			for k, v in i.items():
-				if v not in inc:
-					inc.append(v)
-		for i in expense_list:
-			for k, v in i.items():
-				if v not in exp:
-					exp.append(v)
 		
 		form = TransactionForm(request.POST)
 		if form.is_valid():
@@ -138,22 +132,6 @@ def home(request):
 			amount = form.cleaned_data.get('amount')
 			category = form.cleaned_data.get('category')
 			user=request.user
-			""" def clean(self, value):
-    			cleaned_data = self.cleaned_data
-				if category=='Expense' and tag in inc:
-					raise forms.ValidationError("You call that a title?!")
-				else:
-					return cleaned_data 
-				if category=='Income' and tag in exp:
-					raise forms.ValidationError("You call that a title?!")
-				else:
-					return cleaned_data  """
-			if category=='Expense' and tag in inc:
-				#return render(request, 'users/home.html', {'some_flag': True})
-				messages.warning(request, 'This tag already exists as an income.')
-			elif category=='Income' and tag in exp:
-				#return render(request, 'users/home.html', {'some_flag': True})
-				messages.warning(request, 'This tag already exists as an expense.')
 			 
 			Transaction.objects.create(
 				user=user,
