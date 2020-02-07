@@ -1,1 +1,1 @@
-web: gunicorn payupfinancetracker.wsgi
+web: gunicorn PayUP.wsgi --log-file -
