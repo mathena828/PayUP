@@ -1,4 +1,4 @@
-# payup
+# PayUp
 
 ## Project setup
 ```
