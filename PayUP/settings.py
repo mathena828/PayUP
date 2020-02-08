@@ -24,7 +24,7 @@ SECRET_KEY = 'lbl4b#0jm!nqxe_ji)4_k8_*tx2y3j+d1di9(di2j-62f@@5e$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'PayUP.wsgi.application'
+#WSGI_APPLICATION = 'PayUP.wsgi.application'
 
 
 # Database
