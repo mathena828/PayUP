@@ -7,7 +7,7 @@ celery==4.3.0
 Click==7.0
 cycler==0.10.0
 dj-database-url==0.5.0
-Django==2.2.6
+Django==2.2.9
 django-appconf==1.0.3
 django-braces==1.12.0
 django-crispy-forms==1.7.2
@@ -38,7 +38,7 @@ more-itertools==7.2.0
 numpy==1.17.3
 opencv-python==4.1.1.26
 phonenumbers==8.11.1
-Pillow==6.1.0
+Pillow==6.2.0
 pinax-notifications==5.0.3
 ply==3.11
 psycopg2==2.8.4
