@@ -38,7 +38,7 @@ more-itertools==7.2.0
 numpy==1.17.3
 opencv-python==4.1.1.26
 phonenumbers==8.11.1
-Pillow==6.2.0
+Pillow==8.1.1
 pinax-notifications==5.0.3
 ply==3.11
 psycopg2==2.8.4
